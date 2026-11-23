@@ -56,12 +56,14 @@ loss ablations, set `actor.model.tacittouch.feature_loss_weight=0` or
 
 ## Evaluate
 
-Set up the [UniVTAC environment](../../README.md) and its paths
-as for SimpleTouch, then run the final student checkpoint:
+Set up the [UniVTAC environment](../../README.md#-evaluation) and download a
+student checkpoint from the [shared model repository](https://huggingface.co/cyang203912/SimpleTouch/tree/main/tacittouch)
+using the [download example](../../README.md#distillation). For a checkpoint
+downloaded to `./checkpoints`, run the following commands.
 
 ```bash
 export TACITTOUCH_TASK=lift_bottle
-export TACITTOUCH_CHECKPOINT=/path/to/student/global_step_20000
+export TACITTOUCH_CHECKPOINT="$PWD/checkpoints/tacittouch/${TACITTOUCH_TASK}/global_step_20000"
 bash scripts/tacittouch/evaluate_univtac.sh
 ```
 

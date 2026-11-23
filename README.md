@@ -16,16 +16,28 @@
     <sup>†</sup>Corresponding author
   </p>
   <p>
-    <a href="https://simpletouch-robot.github.io/"><img src="https://img.shields.io/badge/Project-Page-3B82F6?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Project Page"></a>
-    <a href="https://arxiv.org/pdf/2610.02784"><img src="https://img.shields.io/badge/Paper-PDF-7C3AED?style=for-the-badge&amp;logo=adobeacrobatreader&amp;logoColor=white" alt="Paper PDF"></a>
-    <a href="https://arxiv.org/abs/2610.02784"><img src="https://img.shields.io/badge/arXiv-2610.02784-B31B1B?style=for-the-badge&amp;logo=arxiv&amp;logoColor=white" alt="arXiv 2610.02784"></a>
-    <a href="https://huggingface.co/cyang203912/SimpleTouch"><img src="https://img.shields.io/badge/Hugging%20Face-Checkpoints-FF9D00?style=for-the-badge&amp;logo=huggingface&amp;logoColor=white" alt="Hugging Face checkpoints"></a>
+    <strong>SimpleTouch</strong>&nbsp;
+    <a href="https://simpletouch-robot.github.io/"><img src="https://img.shields.io/badge/Project%20Page-2563EB?style=flat&amp;logo=githubpages&amp;logoColor=white" alt="SimpleTouch project page"></a>
+    <a href="https://arxiv.org/pdf/2610.02784"><img src="https://img.shields.io/badge/Paper%20PDF-6D28D9?style=flat&amp;logo=googledocs&amp;logoColor=white" alt="SimpleTouch paper PDF"></a>
+    <a href="https://arxiv.org/abs/2610.02784"><img src="https://img.shields.io/badge/arXiv-2610.02784-B31B1B?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="SimpleTouch arXiv 2610.02784"></a>
+    <a href="https://huggingface.co/cyang203912/SimpleTouch"><img src="https://img.shields.io/badge/Checkpoints-B45309?style=flat&amp;logo=huggingface&amp;logoColor=white" alt="SimpleTouch checkpoints"></a><br>
+    <strong>TacitTouch</strong>&nbsp;
+    <a href="https://pier-lab.github.io/tacittouch/"><img src="https://img.shields.io/badge/Project%20Page-2563EB?style=flat&amp;logo=githubpages&amp;logoColor=white" alt="TacitTouch project page"></a>
+    <a href="#distillation"><img src="https://img.shields.io/badge/Distillation-6D28D9?style=flat&amp;logo=readthedocs&amp;logoColor=white" alt="TacitTouch distillation guide"></a>
+    <img src="https://img.shields.io/badge/arXiv-636A74?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="TacitTouch arXiv link pending">
+    <a href="https://huggingface.co/cyang203912/SimpleTouch/tree/main/tacittouch"><img src="https://img.shields.io/badge/Checkpoints-B45309?style=flat&amp;logo=huggingface&amp;logoColor=white" alt="TacitTouch checkpoints"></a>
   </p>
 </div>
 
 ![SimpleTouch teaser](assets/teaser.webp)
 
 SimpleTouch adds a tactile expert to π0.5 and learns contact-rich manipulation from task demonstrations, without tactile policy pretraining.
+
+## News
+
+- **2026-11-24** Added [TacitTouch](https://pier-lab.github.io/tacittouch/) with
+  UniVTAC simulation training, evaluation, and pretrained student checkpoints.
+  See [Distillation](#distillation).
 
 ## ⚙️ Environment Setup
 
@@ -104,10 +116,6 @@ Available tasks: `lift_bottle`, `pull_out_key`, `lift_can`, `put_bottle_in_shelf
 
 ### UniVTAC example
 
-The [TacitTouch simulation recipe](scripts/tacittouch/README.md) trains a
-vision-only student from a frozen SimpleTouch teacher and uses the same
-UniVTAC evaluation entry point.
-
 The [default recipe](examples/sft/config/simpletac_univtac.yaml) trains for 20,000 steps on episodes 0–49 with 8 GPUs × 8 samples. Use the [Isaac Sim 4.5 UniVTAC demonstrations](https://github.com/univtac/UniVTAC#data-collection), arranging the selected episodes as `<data-root>/<task>/clean/0.hdf5` through `49.hdf5`. Keep the T3 and tokenizer paths set above.
 
 For `insert_hole`, compute normalization statistics and cache future tactile features before starting training:
@@ -153,6 +161,27 @@ SIMPLETOUCH_NUM_GPUS=8 bash scripts/simpletouch/train_univtac.sh
 ```
 
 For another task, change `SIMPLETOUCH_TASK` and the corresponding paths. Training requires the generated `<cache-root>/<task>/manifest.json`; it does not build the cache automatically. Set `SIMPLETOUCH_OUTPUT_ROOT` to change the default `outputs/` directory.
+
+## Distillation
+
+TacitTouch distills a task-trained SimpleTouch teacher into a vision-only
+student. The [released UniVTAC checkpoints](https://huggingface.co/cyang203912/SimpleTouch/tree/main/tacittouch)
+cover Lift Bottle, Lift Can, Put Bottle, and Insert Tube.
+
+With the [UniVTAC evaluation environment](#-evaluation) set up and the policy
+environment active, download and evaluate a student checkpoint.
+
+```bash
+export TACITTOUCH_TASK=lift_bottle
+hf download cyang203912/SimpleTouch \
+  --include "tacittouch/${TACITTOUCH_TASK}/global_step_20000/**" \
+  --local-dir ./checkpoints
+export TACITTOUCH_CHECKPOINT="$PWD/checkpoints/tacittouch/${TACITTOUCH_TASK}/global_step_20000"
+GPU_ID=0 bash scripts/tacittouch/evaluate_univtac.sh
+```
+
+Follow the [TacitTouch simulation recipe](scripts/tacittouch/README.md) to train
+a student with a frozen SimpleTouch teacher.
 
 ## 🛠️ Piper Gripper Hardware
 
