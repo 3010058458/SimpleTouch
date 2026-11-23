@@ -104,6 +104,10 @@ Available tasks: `lift_bottle`, `pull_out_key`, `lift_can`, `put_bottle_in_shelf
 
 ### UniVTAC example
 
+The [TacitTouch simulation recipe](scripts/tacittouch/README.md) trains a
+vision-only student from a frozen SimpleTouch teacher and uses the same
+UniVTAC evaluation entry point.
+
 The [default recipe](examples/sft/config/simpletac_univtac.yaml) trains for 20,000 steps on episodes 0–49 with 8 GPUs × 8 samples. Use the [Isaac Sim 4.5 UniVTAC demonstrations](https://github.com/univtac/UniVTAC#data-collection), arranging the selected episodes as `<data-root>/<task>/clean/0.hdf5` through `49.hdf5`. Keep the T3 and tokenizer paths set above.
 
 For `insert_hole`, compute normalization statistics and cache future tactile features before starting training:
