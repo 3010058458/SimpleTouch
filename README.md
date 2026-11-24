@@ -16,16 +16,13 @@
     <sup>†</sup>Corresponding author
   </p>
   <p>
-    <strong>SimpleTouch</strong>&nbsp;
-    <a href="https://simpletouch-robot.github.io/"><img src="https://img.shields.io/badge/Project%20Page-2563EB?style=flat&amp;logo=githubpages&amp;logoColor=white" alt="SimpleTouch project page"></a>
-    <a href="https://arxiv.org/pdf/2610.02784"><img src="https://img.shields.io/badge/Paper%20PDF-6D28D9?style=flat&amp;logo=googledocs&amp;logoColor=white" alt="SimpleTouch paper PDF"></a>
-    <a href="https://arxiv.org/abs/2610.02784"><img src="https://img.shields.io/badge/arXiv-2610.02784-B31B1B?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="SimpleTouch arXiv 2610.02784"></a>
-    <a href="https://huggingface.co/cyang203912/SimpleTouch"><img src="https://img.shields.io/badge/Checkpoints-B45309?style=flat&amp;logo=huggingface&amp;logoColor=white" alt="SimpleTouch checkpoints"></a><br>
-    <strong>TacitTouch</strong>&nbsp;
-    <a href="https://pier-lab.github.io/tacittouch/"><img src="https://img.shields.io/badge/Project%20Page-2563EB?style=flat&amp;logo=githubpages&amp;logoColor=white" alt="TacitTouch project page"></a>
-    <a href="#distillation"><img src="https://img.shields.io/badge/Distillation-6D28D9?style=flat&amp;logo=readthedocs&amp;logoColor=white" alt="TacitTouch distillation guide"></a>
-    <a href="https://arxiv.org/abs/2611.28697"><img src="https://img.shields.io/badge/arXiv-2611.28697-B31B1B?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="TacitTouch arXiv 2611.28697"></a>
-    <a href="https://huggingface.co/cyang203912/SimpleTouch/tree/main/tacittouch"><img src="https://img.shields.io/badge/Checkpoints-B45309?style=flat&amp;logo=huggingface&amp;logoColor=white" alt="TacitTouch checkpoints"></a>
+    <a href="https://simpletouch-robot.github.io/"><img src="https://img.shields.io/badge/Project%20Page-ST-2563EB?style=flat&amp;logo=githubpages&amp;logoColor=white" alt="SimpleTouch project page"></a>
+    <a href="https://pier-lab.github.io/tacittouch/"><img src="https://img.shields.io/badge/Project%20Page-Tacit-2563EB?style=flat&amp;logo=githubpages&amp;logoColor=white" alt="TacitTouch project page"></a>
+    <a href="https://arxiv.org/pdf/2610.02784"><img src="https://img.shields.io/badge/PDF-ST-6D28D9?style=flat&amp;logo=googledocs&amp;logoColor=white" alt="SimpleTouch paper PDF"></a>
+    <a href="https://arxiv.org/pdf/2611.28697"><img src="https://img.shields.io/badge/PDF-Tacit-6D28D9?style=flat&amp;logo=googledocs&amp;logoColor=white" alt="TacitTouch paper PDF"></a>
+    <a href="https://arxiv.org/abs/2610.02784"><img src="https://img.shields.io/badge/arXiv-ST-B31B1B?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="SimpleTouch arXiv 2610.02784"></a>
+    <a href="https://arxiv.org/abs/2611.28697"><img src="https://img.shields.io/badge/arXiv-Tacit-B31B1B?style=flat&amp;logo=arxiv&amp;logoColor=white" alt="TacitTouch arXiv 2611.28697"></a>
+    <a href="https://huggingface.co/cyang203912/SimpleTouch"><img src="https://img.shields.io/badge/Checkpoints-B45309?style=flat&amp;logo=huggingface&amp;logoColor=white" alt="Shared SimpleTouch and TacitTouch checkpoints"></a>
   </p>
 </div>
 
